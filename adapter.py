@@ -90,8 +90,8 @@ def generate_code_verifier(length=128) -> str:
     return "".join(c for c in code_verifier if c.isalnum())
 
 
-class GmailOAuth2Adapter(OAuth2ProtocolInterface):
-    """Adapter for integrating Gmail's OAuth2 protocol."""
+class TwitterOAuth2Adapter(OAuth2ProtocolInterface):
+    """Adapter for integrating Twitter's OAuth2 protocol."""
 
     def __init__(self):
         self.default_config = DEFAULT_CONFIG
