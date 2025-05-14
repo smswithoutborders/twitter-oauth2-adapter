@@ -197,7 +197,8 @@ class TwitterOAuth2Adapter(OAuth2ProtocolInterface):
                 self.default_config["urls"]["userinfo_uri"]
             ).json()
             userinfo = {
-                "account_identifier": userinfo_response.get("email"),
+                "account_identifier": userinfo_response.get("username")
+                or userinfo_response.get("data", {}).get("username"),
                 "name": userinfo_response.get("name"),
             }
             logger.info("User information fetched successfully.")
