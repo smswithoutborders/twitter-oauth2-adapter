@@ -298,6 +298,10 @@ class TwitterOAuth2Adapter(OAuth2ProtocolInterface):
 
             logger.info("Successfully sent message.")
             return {"success": True, "refreshed_token": self.session.token}
-        except OAuthError as e:
+        except Exception as e:
             logger.error("Failed to send message: %s", e)
-            raise
+            return {
+                "success": False,
+                "message": str(e),
+                "refreshed_token": self.session.token,
+            }
